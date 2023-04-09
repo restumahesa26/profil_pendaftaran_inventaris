@@ -160,6 +160,7 @@
         });
     </script>
     @endif
+
     @if ($errors->any())
     <script>
         $(document).ready(function () {
