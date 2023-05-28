@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class GuruStafController extends Controller
 {
@@ -55,8 +54,8 @@ class GuruStafController extends Controller
         $extension = $request->file('foto')->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         $request->file('foto')->move(public_path('images/foto'), $imageNames);
-        $thumbnailpath = public_path('images/foto/' . $imageNames);
-        Image::make($thumbnailpath)->resize(900, 1200)->save($thumbnailpath);
+        // $thumbnailpath = public_path('images/foto/' . $imageNames);
+        // Image::make($thumbnailpath)->resize(900, 1200)->save($thumbnailpath);
 
         GuruStaf::create([
             'nama' => $request->nama,
@@ -118,8 +117,8 @@ class GuruStafController extends Controller
             $extension = $request->file('foto')->extension();
             $imageNames = uniqid('img_', microtime()) . '.' . $extension;
             $request->file('foto')->move(public_path('images/foto'), $imageNames);
-            $thumbnailpath = public_path('images/foto/' . $imageNames);
-            Image::make($thumbnailpath)->resize(900, 1200)->save($thumbnailpath);
+            // $thumbnailpath = public_path('images/foto/' . $imageNames);
+            // Image::make($thumbnailpath)->resize(900, 1200)->save($thumbnailpath);
         }else {
             $imageNames = $item->foto;
         }

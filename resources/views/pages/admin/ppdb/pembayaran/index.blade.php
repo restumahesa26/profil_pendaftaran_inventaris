@@ -45,6 +45,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                     </form>
+                                    <a target="_blank" href="https://wa.me/{{ $item->wali_murid->no_wa }}" class="btn btn-sm btn-success">Chat WA</a>
                                 </td>
                             </tr>
                             @if (!$item->checkPembayaran($item->id))

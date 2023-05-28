@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('pages.register');
     }
 
     /**
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
+            'no_wa' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -40,15 +42,15 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'nama' => $request->nama,
             'username' => $request->username,
-            'role' => 'admin',
+            'role' => 'wali-murid',
             'email' => $request->email,
+            'no_wa' => $request->no_wa,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        Alert::toast('Berhasil Daftar Akun, Silahkan Masuk ke Sistem', 'success')->position('top');
+        return redirect()->route('login');
     }
 }

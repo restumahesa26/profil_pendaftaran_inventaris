@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class FotoKegiatanController extends Controller
 {
@@ -49,8 +48,8 @@ class FotoKegiatanController extends Controller
         $extension = $request->file('gambar')->extension();
         $imageNames = uniqid('img_', microtime()) . '.' . $extension;
         $request->file('gambar')->move(public_path('images/gambar-foto-kegiatan'), $imageNames);
-        $thumbnailpath = public_path('images/gambar-foto-kegiatan/' . $imageNames);
-        Image::make($thumbnailpath)->resize(1200, 1200)->save($thumbnailpath);
+        // $thumbnailpath = public_path('images/gambar-foto-kegiatan/' . $imageNames);
+        // Image::make($thumbnailpath)->resize(1200, 1200)->save($thumbnailpath);
 
         FotoKegiatan::create([
             'gambar' => $imageNames,
@@ -98,8 +97,8 @@ class FotoKegiatanController extends Controller
             $extension = $request->file('gambar')->extension();
             $imageNames = uniqid('img_', microtime()) . '.' . $extension;
             $request->file('gambar')->move(public_path('images/gambar-foto-kegiatan'), $imageNames);
-            $thumbnailpath = public_path('images/gambar-foto-kegiatan/' . $imageNames);
-            Image::make($thumbnailpath)->resize(1200, 1200)->save($thumbnailpath);
+            // $thumbnailpath = public_path('images/gambar-foto-kegiatan/' . $imageNames);
+            // Image::make($thumbnailpath)->resize(1200, 1200)->save($thumbnailpath);
         }else {
             $imageNames = $item->gambar;
         }

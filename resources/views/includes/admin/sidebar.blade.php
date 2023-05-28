@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item">
+        <li class="nav-item @if(Route::is('dashboard')) active @endif">
             <a class="nav-link" href="{{ route('dashboard') }}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
@@ -8,14 +8,14 @@
         </li>
         @if (Auth::user()->role == 'wali-murid')
         <li class="nav-item nav-category">PPDB</li>
-        <li class="nav-item">
+        <li class="nav-item @if(Route::is('pendaftaran.*')) active @endif">
             <a class="nav-link" href="{{ route('pendaftaran.index') }}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Pendaftaran</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('pembayaran.index') }}">
+            <a class="nav-link @if(Route::is('pembayaran.*')) active @endif" href="{{ route('pembayaran.index') }}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Pembayaran</span>
             </a>

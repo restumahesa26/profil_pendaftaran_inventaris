@@ -47,7 +47,7 @@
                 @csrf
                 @method('PATCH')
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Masukkan Nama" value="{{ old('nama', Auth::user()->nama) }}" required>
@@ -58,11 +58,22 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Masukkan Username" value="{{ old('username', Auth::user()->username) }}" required>
                             @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="no_wa">No Whatsapp Aktif</label>
+                            <input type="text" name="no_wa" class="form-control @error('no_wa') is-invalid @enderror" id="no_wa" placeholder="+628............." value="{{ old('no_wa', Auth::user()->no_wa) }}" required>
+                            @error('no_wa')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

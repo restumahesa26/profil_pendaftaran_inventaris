@@ -18,9 +18,14 @@ class PembayaranController extends Controller
     {
         $periode = Periode::where('status', 'buka')->first();
 
-        $items = PendaftaranPPDB::where('periode_id', $periode->id)->where('status_tes', 'lulus')->latest()->get();
+        if ($periode) {
+            $items = PendaftaranPPDB::where('periode_id', $periode->id)->where('status_tes', 'lulus')->latest()->get();
 
-        return view('pages.admin.ppdb.pembayaran.index', compact('items'));
+            return view('pages.admin.ppdb.pembayaran.index', compact('items'));
+        } else {
+            Alert::toast('Tidak Ada Periode Aktif', 'info')->position('top');
+            return redirect()->back();
+        }
     }
 
     public function verifikasi($id)

@@ -17,7 +17,7 @@ class DataBarangController extends Controller
      */
     public function index()
     {
-        $items = DataBarang::latest()->get();
+        $items = DataBarang::withCount('inventaris')->latest()->get();
 
         return view('pages.admin.inventaris.data-barang.index', compact('items'));
     }

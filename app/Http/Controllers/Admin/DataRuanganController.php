@@ -18,7 +18,7 @@ class DataRuanganController extends Controller
      */
     public function index()
     {
-        $items = DataRuangan::all();
+        $items = DataRuangan::withCount('inventaris')->latest()->get();
         $items2 = DataBarang::all();
 
         return view('pages.admin.inventaris.data-ruangan.index', compact('items', 'items2'));

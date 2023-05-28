@@ -54,11 +54,14 @@
                                     @if (!$item->checkDataAnak($item->id) && !$item->checkDataAyah($item->id) && !$item->checkDataIbu($item->id) && !$item->checkDataTambahan($item->id) && !$item->checkBerkas($item->id))
                                     <a href="{{ route('admin-pendaftaran.show', $item->id) }}" class="btn btn-sm btn-primary">Lihat</a>
                                     @endif
+                                    @if ($item->pembayarans_count < 1)
                                     <form action="{{ route('admin-pendaftaran.delete', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                     </form>
+                                    @endif
+                                    <a target="_blank" href="https://wa.me/{{ $item->wali_murid->no_wa }}" class="btn btn-sm btn-success">Chat WA</a>
                                 </td>
                             </tr>
                             <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"

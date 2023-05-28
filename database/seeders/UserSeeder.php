@@ -27,7 +27,8 @@ class UserSeeder extends Seeder
             'username' => 'ejiman',
             'email' => 'ejiman@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'wali-murid'
+            'role' => 'wali-murid',
+            'no_wa' => '+628117482512'
         ]);
     }
 }

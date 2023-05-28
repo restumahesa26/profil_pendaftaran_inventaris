@@ -14,4 +14,9 @@ class DataBarang extends Model
     protected $fillable = [
         'nama_barang'
     ];
+
+    public function inventaris()
+    {
+        return $this->hasMany(DataInventaris::class, 'barang_id', 'id');
+    }
 }

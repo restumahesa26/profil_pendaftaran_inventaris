@@ -24,6 +24,12 @@ class ProfileController2 extends Controller
             'nama' => ['required', 'string', 'max:100'],
         ]);
 
+        if (Auth::user()->role == 'wali-murid') {
+            $request->validate([
+                'no_wa' => ['required', 'string', 'max:100'],
+            ]);
+        }
+
         if ($request->email !== Auth::user()->email) {
             $request->validate([
                 'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
@@ -47,6 +53,7 @@ class ProfileController2 extends Controller
         $item->nama = $request->nama;
         $item->email = $request->email;
         $item->username = $request->username;
+        $item->no_wa = $request->no_wa;
         if ($request->password) {
             $item->password = Hash::make($request->password);
         }

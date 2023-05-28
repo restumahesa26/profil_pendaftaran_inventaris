@@ -22,9 +22,14 @@ class PendaftaranController extends Controller
     {
         $periode = Periode::where('status', 'buka')->first();
 
-        $items = PendaftaranPPDB::where('periode_id', $periode->id)->latest()->get();
+        if ($periode) {
+            $items = PendaftaranPPDB::withCount('pembayarans')->where('periode_id', $periode->id)->latest()->get();
 
-        return view('pages.admin.ppdb.pendaftaran.index', compact('items'));
+            return view('pages.admin.ppdb.pendaftaran.index', compact('items'));
+        } else {
+            Alert::toast('Tidak Ada Periode Aktif', 'info')->position('top');
+            return redirect()->back();
+        }
     }
 
     public function show($id)

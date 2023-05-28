@@ -18,7 +18,7 @@ class WaliMuridController extends Controller
      */
     public function index()
     {
-        $items = User::where('role', 'wali-murid')->latest()->get();
+        $items = User::withCount('pendaftaran')->where('role', 'wali-murid')->latest()->get();
 
         return view('pages.admin.ppdb.wali-murid.index', compact('items'));
     }
@@ -38,6 +38,7 @@ class WaliMuridController extends Controller
     {
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
+            'no_wa' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -48,6 +49,7 @@ class WaliMuridController extends Controller
             'username' => $request->username,
             'role' => 'wali-murid',
             'email' => $request->email,
+            'no_wa' => $request->no_wa,
             'password' => Hash::make($request->password),
         ]);
 
@@ -82,6 +84,7 @@ class WaliMuridController extends Controller
     {
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
+            'no_wa' => ['required', 'string', 'max:255'],
         ]);
 
         $item = User::findOrFail($id);
@@ -107,6 +110,7 @@ class WaliMuridController extends Controller
         $item->nama = $request->nama;
         $item->username = $request->username;
         $item->email = $request->email;
+        $item->no_wa = $request->no_wa;
         if ($request->password) {
             $item->password = Hash::make($request->password);
         }

@@ -25,6 +25,11 @@ class PendaftaranPPDB extends Model
         return $this->hasOne(PembayaranPPDB::class, 'pendaftaran_id', 'id');
     }
 
+    public function pembayarans()
+    {
+        return $this->hasMany(PembayaranPPDB::class, 'pendaftaran_id', 'id');
+    }
+
     public function wali_murid()
     {
         return $this->hasOne(User::class, 'id', 'wali_murid_id');

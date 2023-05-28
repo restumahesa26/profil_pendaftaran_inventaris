@@ -23,6 +23,7 @@ class User extends Authenticatable
         'username',
         'role',
         'email',
+        'no_wa',
         'password',
     ];
 
@@ -54,5 +55,10 @@ class User extends Authenticatable
         } else {
             return false;
         }
+    }
+
+    public function pendaftaran()
+    {
+        return $this->hasMany(PendaftaranPPDB::class, 'wali_murid_id', 'id');
     }
 }

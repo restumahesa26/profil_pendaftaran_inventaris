@@ -1,9 +1,7 @@
 @extends('layouts.home')
 
 @section('content')
-<!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
-
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
@@ -21,19 +19,14 @@
             </div>
         </div>
     </div>
-
-</section><!-- End Hero -->
+</section>
 
 <main id="main">
-
-    <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
         <div class="container" data-aos="fade-up">
-
             <div class="section-title">
                 <h2>Visi, Misi, dan Tujuan</h2>
             </div>
-
             <div class="row content justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center">
@@ -74,11 +67,8 @@
                     @endif
                 </div>
             </div>
-
         </div>
-    </section><!-- End About Us Section -->
-
-    <!-- ======= Why Us Section ======= -->
+    </section>
     <section id="why-us" class="why-us section-bg">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
@@ -94,21 +84,17 @@
                             @else
                             <h4 class="text-danger">Struktur Organisasi Belum Dimasukkan</h4>
                             @endif
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- End Why Us Section -->
-
+    </section>
     <section id="team" class="team">
         <div class="container" data-aos="fade-up">
-
             <div class="section-title">
                 <h2>Data Guru dan Staf</h2>
             </div>
-
             <div class="row">
                 @forelse ($guru as $item)
                 <div class="col-lg-6">
@@ -135,19 +121,14 @@
                     </div>
                 </div>
                 @endforelse
-
             </div>
-
         </div>
-    </section><!-- End Team Section -->
-
+    </section>
     <section id="foto" class="foto section-bg">
         <div class="container" data-aos="fade-up">
-
             <div class="section-title">
                 <h2>Foto Kegiatan</h2>
             </div>
-
             @if ($foto)
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -181,9 +162,6 @@
             </div>
             @endif
         </div>
-    </section><!-- End Team Section -->
-
-
-
-</main><!-- End #main -->
+    </section>
+</main>
 @endsection

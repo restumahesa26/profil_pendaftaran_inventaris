@@ -91,6 +91,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Username</th>
+                                <th>No Whatsapp</th>
                                 <th>Email</th>
                                 <th>Aksi</th>
                             </tr>
@@ -101,13 +102,16 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td><a href="{{ route('wali-murid.edit', $item->id) }}">{{ $item->username }}</a></td>
+                                <td><a href="https://wa.me/{{ $item->no_wa }}" target="_blank">{{ $item->no_wa }}</a></td>
                                 <td>{{ $item->email }}</td>
                                 <td>
+                                    @if ($item->pendaftaran_count < 1)
                                     <form action="{{ route('wali-murid.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @empty

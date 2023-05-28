@@ -60,11 +60,13 @@
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-ruangan-edit{{ $item->id }}">
                                         Edit
                                     </button>
+                                    @if ($item->inventaris_count < 1)
                                     <form action="{{ route('data-ruangan.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger btn-hapus">Hapus</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             <div class="modal fade" id="modal-ruangan-edit{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('role', ['admin', 'wali-murid']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('no_wa')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
