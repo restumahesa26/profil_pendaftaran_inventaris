@@ -25,33 +25,21 @@
                             <div class="brand-logo">
                                 <img src="{{ url('logo_mts.png') }}" alt="logo" style="width: 100px">
                             </div>
-                            @include('sweetalert::alert')
-                            <h4>Halo, Selamat Datang di SI PPDB</h4>
-                            <h6 class="fw-light">Masuk untuk melanjutkan</h6>
-                            @error('login')
+                            <h4>Reset Password</h4>
+                            <h6 class="fw-light">Masukkan Email Akun Yang Terdaftar</h6>
+                            @error('email')
                             <span class="text-danger" style="font-size: 14px;">{{ $message }}</span>
                             @enderror
-                            <form class="pt-3" action="{{ route('login') }}" method="POST">
+                            @if(Session::has('status'))
+                            <span class="text-success" style="font-size: 14px;">{{ Session::get('status')}}</span>
+                            @endif
+                            <form class="pt-3" action="{{ route('password.email') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email atau Username" name="login" value="{{ old('login') }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg"
-                                        id="exampleInputPassword1" placeholder="Password" name="password" required>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input" name="remember_me">
-                                        Ingat Saya
-                                    </label>
+                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="email" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Masuk</button>
-                                </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <p><a href="{{ route('password.request') }}">Lupa Password?</a></p>
-                                    <p>Belum Punya Akun? <a href="{{ route('register') }}">Daftar Sekarang</a></p>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Reset Password</button>
                                 </div>
                             </form>
                         </div>

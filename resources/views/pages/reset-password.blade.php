@@ -26,32 +26,33 @@
                                 <img src="{{ url('logo_mts.png') }}" alt="logo" style="width: 100px">
                             </div>
                             @include('sweetalert::alert')
-                            <h4>Halo, Selamat Datang di SI PPDB</h4>
-                            <h6 class="fw-light">Masuk untuk melanjutkan</h6>
-                            @error('login')
+                            <h4>Ganti Password</h4>
+                            <h6 class="fw-light">Masukkan Email dan Password Kembali</h6>
+                            @error('email')
                             <span class="text-danger" style="font-size: 14px;">{{ $message }}</span>
                             @enderror
-                            <form class="pt-3" action="{{ route('login') }}" method="POST">
+                            @error('password')
+                            <span class="text-danger" style="font-size: 14px;">{{ $message }}</span>
+                            @enderror
+                            @error('password_confirmation')
+                            <span class="text-danger" style="font-size: 14px;">{{ $message }}</span>
+                            @enderror
+                            <form class="pt-3" action="{{ route('password.store') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="token" value="{{ $request->route('token') }}">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email atau Username" name="login" value="{{ old('login') }}" required>
+                                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email" name="email" value="{{ old('email', $request->email) }}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg"
                                         id="exampleInputPassword1" placeholder="Password" name="password" required>
                                 </div>
-                                <div class="form-check">
-                                    <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input" name="remember_me">
-                                        Ingat Saya
-                                    </label>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg"
+                                        id="exampleInputPassword1" placeholder="Konfirmasi Password" name="password_confirmation" required>
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Masuk</button>
-                                </div>
-                                <div class="my-2 d-flex justify-content-between align-items-center">
-                                    <p><a href="{{ route('password.request') }}">Lupa Password?</a></p>
-                                    <p>Belum Punya Akun? <a href="{{ route('register') }}">Daftar Sekarang</a></p>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Reset Password</button>
                                 </div>
                             </form>
                         </div>
