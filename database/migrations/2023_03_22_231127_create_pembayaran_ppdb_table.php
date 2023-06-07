@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('pembayaran_ppdb', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pendaftaran_id')->references('id')->on('pendaftaran_ppdb')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('jenis_pembayaran');
             $table->string('bukti_pembayaran');
             $table->enum('status', ['terima','tolak','tunggu'])->default('tunggu');
             $table->string('keterangan')->nullable();

@@ -66,10 +66,10 @@
                 <td>{{ $item2->barang->nama_barang }}</td>
                 <td>{{ $item2->jumlah }}</td>
                 <td>@rupiah($item2->harga)</td>
-                <td>{{ $item2->keadaan_baik != '' ? $item2->keadaan_baik : '-' }}</td>
-                <td>{{ $item2->keadaan_kurang_baik != '' ? $item2->keadaan_tidak_baik : '-' }}
+                <td>{{ $item2->kondisi_baik != '' ? $item2->kondisi_baik : '-' }}</td>
+                <td>{{ $item2->kondisi_tidak_baik != '' ? $item2->kondisi_tidak_baik : '-' }}
                 </td>
-                <td>{{ $item2->rusak_berat != '' ? $item2->rusak : '-' }}</td>
+                <td>{{ $item2->kondisi_rusak != '' ? $item2->kondisi_rusak : '-' }}</td>
                 <td>{{ $item2->keterangan != '' ? $item2->keterangan : '-' }}</td>
             </tr>
             @empty

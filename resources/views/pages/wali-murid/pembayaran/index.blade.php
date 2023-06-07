@@ -92,7 +92,7 @@
                                                 <div class="form-group">
                                                     <label for="bukti_pembayaran">Masukkan Bukti Pembayaran</label>
                                                     <input type="file" name="bukti_pembayaran"
-                                                        class="form-control @error('bukti_pembayaran') is-invalid @enderror"
+                                                        class="form-control @error('bukti_pembayaran') is-invalid @enderror"  accept="image/png, image/jpg, image/jpeg"
                                                         id="bukti_pembayaran" placeholder="Masukkan Bukti Pembayaran"
                                                         value="{{ old('bukti_pembayaran') }}" required>
                                                     @error('bukti_pembayaran')
